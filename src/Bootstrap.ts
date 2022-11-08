@@ -1,4 +1,5 @@
 import express from 'express';
+import cors from 'cors';
 import type { IApp } from './Types/App.type';
 import type Controller from './Types/Controller.type';
 import Logging from './Utils/Logging';
@@ -21,6 +22,7 @@ export default class App implements IApp {
   private initializeMiddlewares() {
     this.app.use(express.json());
     this.app.use(express.urlencoded({ extended: true }));
+    this.app.use(cors());
   }
 
   private initializeControllers(controllers: Controller[]) {
